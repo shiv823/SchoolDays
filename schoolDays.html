@@ -1,0 +1,80 @@
+<head>
+<style>
+body{
+         background-image: url(giphy.gif);
+          background-size: 140%,140%;
+        h7{
+          display: block;
+          margin: auto;
+          width: 100%;
+        }
+ }
+</style>
+</head>
+<body>
+
+<h1 align="center" style="color:#74138C; font-family:Georgia;font-size:400%" >Is there school today?</h1>
+<h2 align="center" style="color:#000000; font-family:Georgia;font-size:200%" >Weather Conditions</h2>
+<h3 align="center" style="color:#74138C; font-family:Georgia;font-size:150%;background-color: #DD597D" >Is There Snow?</h3>
+<center><input align="center" type ="string" id="snowCheck" Style="color:FF3300;font-family:Comic Sans MS;"></input></center>
+<h4 align="center" style="color:#74138C; font-family:Georgia;font-size:150%;background-color: #DD597D">If snow, how many inches? Please put zero when is no snow.</h4>
+<center><input type ="number" id="inchCheck" Style="color:FF3300;font-family:Comic Sans MS;"></input></center>
+<h5 align="center" style="color:#74138C; font-family:Georgia;font-size:150%;background-color: #DD597D">What is the temperature outside(degrees Fahrenehit)?</h5>
+<center><input type= "number" id="tempCheck" Style="color:FF3300;font-family:Comic Sans MS;"></input><center>
+<h6 align="center" style="color:#000000; font-family:Georgia;font-size:230%" >Road Conditions</h6>
+<h7 align="center" style="color:#330066; font-family:Georgia;font-size:150%;background-color: #DD597D" >Is there salt applied?</h7><br><br><br>
+<center><input type ="string" id="saltCheck" Style="color:FF3300;font-family:Comic Sans MS;"></input><center><br><br>
+<h8 align="center" style="color:#330066; font-family:Georgia;font-size:150%;background-color: #DD597D" >Is there power outage?</h8><br><br><br>
+<input type ="string" id="snowCheck" Style="color:FF3300;font-family:Comic Sans MS;" ></input><br><br>
+
+<button type="okButton" onclick = "getValues()"  value = "Calculate" style="display: block; margin: 0 auto; color:#FFFFFF;font-family:Georgia;height:50px;width:100px;font-size:100%;background-color:#74138C">Results!</button><br>
+
+</body>
+<script>
+document.write("An automatic weather reporter for Drexel students")
+var schoolCheck = 0;
+var snow = "";
+var inches = 0;
+var salt = "";
+var temp = "";
+function getValues(){
+  snow = String(document.getElementById("snowCheck").value);
+  inches = Number(document.getElementById("inchCheck").value);
+  salt = String(document.getElementById("saltCheck").value);
+  temp = Number(document.getElementById("tempCheck").value);
+  checkSnowInch();
+  return this;
+}
+function checkSnowInch()
+{
+  if(snow == "yes"){
+    if(inches >= 4){
+      schoolCheck = schoolCheck+1;
+}
+      checkTemp();
+}
+function checkTemp(){
+  if (temp <= 20)
+      schoolCheck = schoolCheck+1;
+  }
+    saltCheck();
+}
+function saltCheck(){
+  if (salt == "no"){
+    schoolCheck = schoolCheck+1;
+  }
+    isThereSchool();
+}
+function isThereSchool(){
+if(schoolCheck >=3){
+  alert("ALERT: Classes are cancelled today");
+}
+else if (schoolCheck>0){
+     alert("No classes are cancelled today");
+}
+else{
+     alert("Please provide valid entries")
+}
+}
+</script>
+</html>
